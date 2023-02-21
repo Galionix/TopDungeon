@@ -12,7 +12,7 @@ public class Chest : Collectable
         if (!collected)
         {
             base.OnCollect();
-            Debug.Log("Grant pesos " + pesosAmount);
+            GameManager.instance.pesos += pesosAmount;
             GetComponent<SpriteRenderer>().sprite = emtpyChest;
         }
     }

@@ -16,6 +16,8 @@ public class Portal : Collideable
         {
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             SceneManager.LoadScene(sceneName);
+
+            GameManager.instance.SaveState();
             // playerStorage.initialValue = spawnPoint;
             // Debug.Log("Load level " + levelToLoad);
         }
