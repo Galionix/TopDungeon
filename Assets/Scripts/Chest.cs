@@ -14,6 +14,14 @@ public class Chest : Collectable
             base.OnCollect();
             GameManager.instance.pesos += pesosAmount;
             GetComponent<SpriteRenderer>().sprite = emtpyChest;
+            GameManager.instance.ShowText(
+                "+" + pesosAmount + " pesos!",
+                25,
+                Color.yellow,
+                transform.position,
+                Vector3.up * 20,
+                1.5f
+            );
         }
     }
 }

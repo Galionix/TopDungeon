@@ -34,6 +34,19 @@ public class GameManager : MonoBehaviour
     // References
 
     public Player player;
+    public FloatingTextManager floatingTextManager;
+
+    public void ShowText(
+        string msg,
+        int fontSize,
+        Color color,
+        Vector3 position,
+        Vector3 motion,
+        float duration
+    )
+    {
+        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+    }
 
     // State
 
@@ -51,8 +64,6 @@ public class GameManager : MonoBehaviour
     */
     public void SaveState()
     {
-
-
         // SceneManager.sceneLoaded -= SaveState;
         string SaveState = "";
 
@@ -72,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void LoadState(Scene s, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= LoadState;
-        if(!PlayerPrefs.HasKey("SaveState"))
+        if (!PlayerPrefs.HasKey("SaveState"))
         {
             Debug.Log("No save state found");
             return;
