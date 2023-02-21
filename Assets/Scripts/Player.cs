@@ -7,22 +7,27 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Vector3 moveDelta;
 
+    private RaycastHit2D hitY;
+
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
+    // private void Awake()
+    // {
+    //     boxCollider = GetComponent<BoxCollider2D>();
+    // }
+
     // Start is called before the first frame update
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-
         moveDelta = Vector3.zero;
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -40,9 +45,37 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        // define hit
+        hitY = Physics2D.BoxCast(
+            transform.position,
+            boxCollider.size,
+            0f,
+            new Vector2(0, moveDelta.y),
+            Mathf.Abs(moveDelta.y * Time.deltaTime),
+            LayerMask.GetMask("Actor", "Blocking")
+        );
 
-        // Move
-        // transform.position += moveDelta * Time.deltaTime * 5;
-        transform.Translate(moveDelta * Time.deltaTime * 5, Space.World);
+        if (hitY.collider == null)
+        {
+            // Move
+            transform.Translate(0,moveDelta.y * Time.deltaTime, 0);
+        }
+
+        // define hit for x
+        RaycastHit2D hitX = Physics2D.BoxCast(
+            transform.position,
+            boxCollider.size,
+            0f,
+            new Vector2(moveDelta.x, 0),
+            Mathf.Abs(moveDelta.x * Time.deltaTime),
+            LayerMask.GetMask("Actor", "Blocking")
+        );
+
+        if (hitX.collider == null)
+        {
+            // Move
+            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        }
+
     }
 }

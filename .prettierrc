@@ -1,0 +1,13 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.cs",
+      "options": {
+        "parser": "csharp",
+        "tabWidth": 4
+      }
+    }
+  ]
+}
