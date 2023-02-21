@@ -47,6 +47,9 @@ TagManager:
   - name: Design
     uniqueID: 3217338641
     locked: 0
+  - name: Interactible
+    uniqueID: 2542393893
+    locked: 0
   - name: Actor
     uniqueID: 2403719069
     locked: 0
