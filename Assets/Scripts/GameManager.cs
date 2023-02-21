@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        GameManager.instance.LoadState();
+        // GameManager.instance.LoadState();
+        // add event for scene loaded event
+        // SceneManager.sceneLoaded += SaveState;
+        SceneManager.sceneLoaded += LoadState;
     }
 
     // Resources
@@ -47,6 +51,9 @@ public class GameManager : MonoBehaviour
     */
     public void SaveState()
     {
+
+
+        // SceneManager.sceneLoaded -= SaveState;
         string SaveState = "";
 
         // preferredSkin
@@ -59,10 +66,12 @@ public class GameManager : MonoBehaviour
         SaveState += "0";
 
         PlayerPrefs.SetString("SaveState", SaveState);
+        Debug.Log("SaveState");
     }
 
-    public void LoadState()
+    public void LoadState(Scene s, LoadSceneMode mode)
     {
+        SceneManager.sceneLoaded -= LoadState;
         if(!PlayerPrefs.HasKey("SaveState"))
         {
             Debug.Log("No save state found");
