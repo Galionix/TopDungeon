@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         float duration
     )
     {
+        Debug.Log("game manager: ShowText");
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
 

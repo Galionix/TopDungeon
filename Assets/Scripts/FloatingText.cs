@@ -17,22 +17,13 @@ public class FloatingText
     {
         active = true;
         lastShown = Time.time;
-        go.SetActive(true);
-        // go.SetActive(true);
-        // txt.fontSize = fontSize;
-        // txt.color = color;
-        // txt.text = message;
-        // go.transform.position = position;
-        // this.motion = motion;
-        // this.duration = duration;
-        // lastShown = Time.time;
-        // active = true;
+        go.SetActive(active);
     }
 
     public void Hide()
     {
-        go.SetActive(false);
         active = false;
+        go.SetActive(active);
     }
 
     public void UpdateFloatingText()

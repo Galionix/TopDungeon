@@ -38,16 +38,18 @@ public class FloatingTextManager : MonoBehaviour
         floatingText.txt.text = message;
         floatingText.txt.fontSize = fontSize;
         floatingText.txt.color = color;
-        floatingText.go.transform.position = Camera.main.WorldToScreenPoint(position);
-        floatingText.motion = motion;
+Debug.Log("Position: " + position);
+
+    floatingText.go.transform.position = Camera.main.WorldToScreenPoint(position);
+    // floatingText.go.transform.position = position;
+    // floatingText.go.transform.localScale = Vector3.one;
+
+    floatingText.motion = motion;
 
         floatingText.duration = duration;
-        floatingText.lastShown = Time.time;
-        floatingText.active = true;
 
         floatingText.Show();
 
-        // text.Show(message, fontSize, color, position, motion, duration);
     }
 
     private void Update()
