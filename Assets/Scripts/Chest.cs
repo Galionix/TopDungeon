@@ -19,7 +19,7 @@ public class Chest : Collectable
                 25,
                 Color.yellow,
                 transform.position,
-                Vector3.up * 50,
+                Vector3.up * 25,
                 1.5f
             );
         }
